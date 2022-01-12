@@ -15,17 +15,17 @@ public class Snake extends GameObjekt {
 	
 	public Point move(boolean food,int direction) throws GameOverExeption {
 		switch(direction) {
-		case GameControll.LEFT: moveLeft();break;
-		case GameControll.RIGHT: moveRight();break;
-		case GameControll.DOWN:	moveDown();break;
-		case GameControll.UP: moveUp();
+		case GameControllerInterface.LEFT: moveLeft();break;
+		case GameControllerInterface.RIGHT: moveRight();break;
+		case GameControllerInterface.DOWN:	moveDown();break;
+		case GameControllerInterface.UP: moveUp();
 		} 
 		
 		
 		
 		if((points.contains(aktuellerPunkt()) 		 //Wenn der Aktuelle Punkt bereits von der Schlange belegt ist
-				|| aktuellerPunkt().x==GameControll.WIDHT 	//Oder er aus dem Feld läuft
-				|| aktuellerPunkt().y==GameControll.HIGHT
+				|| aktuellerPunkt().x==GameController.WIDTH    //Oder er aus dem Feld läuft
+				|| aktuellerPunkt().y==GameController.HEIGHT
 				|| aktuellerPunkt().x<0
 				|| aktuellerPunkt().y<0) )
 						throw new GameOverExeption(score);	//schmeißt er die GameOverExeption
@@ -44,29 +44,29 @@ public class Snake extends GameObjekt {
 	}
 	
 	private void moveUp() throws GameOverExeption {
-		if(GameControll.WALL)
+		if(GameController.WALL)
 			setPoint(super.aktuellerPunkt().x, super.aktuellerPunkt().y-1);
 		else
-			setPoint(super.aktuellerPunkt().x, (super.aktuellerPunkt().y-1+GameControll.HIGHT)%GameControll.HIGHT);
+			setPoint(super.aktuellerPunkt().x, (super.aktuellerPunkt().y-1+GameController.HEIGHT)%GameController.HEIGHT);
 		
 	}
 	private void moveDown() throws GameOverExeption {
-		if(GameControll.WALL)
+		if(GameController.WALL)
 			setPoint(super.aktuellerPunkt().x, super.aktuellerPunkt().y+1);
 		else
-			setPoint(super.aktuellerPunkt().x, (super.aktuellerPunkt().y+1)%GameControll.HIGHT);
+			setPoint(super.aktuellerPunkt().x, (super.aktuellerPunkt().y+1)%GameController.HEIGHT);
 	}
 	private void moveLeft() throws GameOverExeption {
-		if(GameControll.WALL)
+		if(GameController.WALL)
 			setPoint(super.aktuellerPunkt().x-1, super.aktuellerPunkt().y);
 		else
-			setPoint((super.aktuellerPunkt().x-1+GameControll.WIDHT)%GameControll.WIDHT, super.aktuellerPunkt().y);		
+			setPoint((super.aktuellerPunkt().x-1+GameController.WIDTH)%GameController.WIDTH, super.aktuellerPunkt().y);
 	}
 	private void moveRight() throws GameOverExeption {
-		if(GameControll.WALL)
+		if(GameController.WALL)
 			setPoint(super.aktuellerPunkt().x+1, super.aktuellerPunkt().y);	
 		else
-			setPoint((super.aktuellerPunkt().x+1)%GameControll.WIDHT, super.aktuellerPunkt().y);		
+			setPoint((super.aktuellerPunkt().x+1)%GameController.WIDTH, super.aktuellerPunkt().y);
 	}
 	public void remote() {
 		points.clear();
