@@ -6,7 +6,7 @@ public class Food extends GameObjekt {
 	}
 
 	public Point getPoint() {
-		return aktuellerPunkt();
+		return currentPoint();
 	}
 
 	public void newFood() {

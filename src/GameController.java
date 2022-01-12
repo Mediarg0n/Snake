@@ -134,7 +134,7 @@ public class GameController implements GameControllerInterface, ActionListener, 
                 timer.stop();
                 gameOver = true;
             }
-            hasFood = food.aktuellerPunkt().equals(snake.aktuellerPunkt());
+            hasFood = food.currentPoint().equals(snake.currentPoint());
         }
     }
 }
